@@ -3,14 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mənim Tətbiqim</title>
+    <title>SmartEduNet Panel</title>
     <style>
-        /* Bu hissə ekranı tam doldurur və kənar boşluqları silir */
         body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; }
         iframe { width: 100%; height: 100%; border: none; }
     </style>
 </head>
 <body>
-    <iframe src="https://script.google.com/macros/s/AKfycbzSmh_U3TQomjnXlveHFA4bbl9eOXrgIyg_HpTtQ3wAe_mh8HQ1lkZqS0vU50PkjF-_/exec"></iframe>
+    <iframe id="mainFrame" src=""></iframe>
+
+    <script>
+        // Bütün linklərini bura siyahı kimi əlavə etdim
+        const links = {
+            "ana": "https://script.google.com/macros/s/AKfycbwncnYqFfM6O9QPT9pOO0SVI62ci_esThd3e6tEHE80ugU8bUWKDxNVn4u8556uk0g/exec",
+            "cinare": "https://script.google.com/macros/s/AKfycbwsJlhx-noSVSLoQOQJu1ZkS6NXPnK00Mu83BMr2cGYVlnkcOP7AQCKVvTxu0lun7_wmA/exec",
+            "samir": "https://script.google.com/macros/s/AKfycbyGfu24lIlC8va0LtXqFlmyPxFylrGSIIjqWy1s1Tp2rQDwU497CADFNLgwMLjW72ZU/exec",
+            "zakir": "https://script.google.com/macros/s/AKfycbxpgSgtUI5WeVg4fmokRLbc6AbHDcSXxbNLpIjNOdN-P9gvdScdSqpSwIxNiEZ4Fl31Qw/exec",
+            "metanet": "https://script.google.com/macros/s/AKfycbxQOtZ9HJSGJ41p4HeU0Y0KFaiCLwE02_R-gDnbFAL9a_REZnE3USoXipNu5FVanycvPw/exec",
+            "sefure": "https://script.google.com/macros/s/AKfycbzUfeZBpu7kDSnoa3EY_v9VYFqMRzKKGU3vp155cfwq9yBpVJ_j2ZlcxiRy6QjB1rUW/exec"
+            // Digər müəllimləri də eyni qayda ilə bura əlavə edə bilərsən
+        };
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const pageId = urlParams.get('p') || 'ana'; // Əgər p yoxdursa ana səhifəni aç
+
+        const frame = document.getElementById('mainFrame');
+        if (links[pageId]) {
+            frame.src = links[pageId];
+        } else {
+            frame.src = links['ana']; // Tapılmasa ana səhifəyə qaytar
+        }
+    </script>
 </body>
 </html>
