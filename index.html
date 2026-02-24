@@ -1,16 +1,29 @@
 <!DOCTYPE html>
-<html lang="az">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mənim Tətbiqim</title>
+    <title>SmartEduNet Platforması</title>
     <style>
-        /* Bu hissə ekranı tam doldurur və kənar boşluqları silir */
         body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; }
         iframe { width: 100%; height: 100%; border: none; }
     </style>
 </head>
 <body>
-    <iframe src="https://script.google.com/macros/s/AKfycbxdCxN6ZJEP5H1e45N3MXb_lAeb0fDxebjw6mw48AN8RJXkNrZj6JNGxfTJoewi7Ss/exec"></iframe>
+    <iframe id="appFrame" src=""></iframe>
+
+    <script>
+        const scripts = {
+            "ana": "https://script.google.com/macros/s/AKfycbwncnYqFfM6O9QPT9pOO0SVI62ci_esThd3e6tEHE80ugU8bUWKDxNVn4u8556uk0g/exec",
+            "m1": "https://script.google.com/macros/s/AKfycbwsJlhx-noSVSLoQOQJu1ZkS6NXPnK00Mu83BMr2cGYVlnkcOP7AQCKVvTxu0lun7_wmA/exec",
+            "m2": "https://script.google.com/macros/s/AKfycbzKrjR4sV3hyAmGCQRJPHmDFBWwUVVQED0NLB7PgHR81f1VZn-AYJ-4dctkacbemgX3/exec",
+            "m3": "https://script.google.com/macros/s/AKfycbxpgSgtUI5WeVg4fmokRLbc6AbHDcSXxbNLpIjNOdN-P9gvdScdSqpSwIxNiEZ4Fl31Qw/exec"
+            // Digər m4, m5... linklərini bura əlavə et
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const key = params.get('m') || 'ana';
+        document.getElementById('appFrame').src = scripts[key] || scripts['ana'];
+    </script>
 </body>
 </html>
