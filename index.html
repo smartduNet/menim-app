@@ -5,30 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>SmartEduNet Platforması</title>
     <style>
-        /* Ekranın sürüşməsini (scroll) və boşluqları tam sıfırlayırıq */
-        body, html { 
-            margin: 0; 
-            padding: 0; 
-            height: 100%; 
-            width: 100%; 
-            overflow: hidden; 
-            position: fixed; /* Mobildə titrəməni azaldır */
+        body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; background: #fff; }
+        
+        /* İframe-in konteyneri */
+        .wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
         }
-        iframe { 
-            width: 100%; 
-            height: 100%; 
-            border: none; 
+
+        iframe {
+            border: none;
+            width: 100%;
+            height: 100%;
             display: block;
+        }
+
+        /* Mobil cihazlar üçün xüsusi tənzimləmə */
+        @media only screen and (max-width: 600px) {
+            iframe {
+                /* Əgər hər şey çox böyükdürsə, tətbiqi 0.8 (80%) qədər kiçildir */
+                /* Bu rəqəmi (0.8) ehtiyaca görə 0.7 və ya 0.9 edə bilərsən */
+                transform: scale(0.85);
+                transform-origin: 0 0;
+                width: 117.6%; /* (100 / 0.85) - ekranı tam doldurması üçün */
+                height: 117.6%;
+            }
         }
     </style>
 </head>
 <body>
-    <iframe id="appFrame" src="" allow="autoplay; camera; microphone"></iframe>
+    <div class="wrapper">
+        <iframe id="appFrame" src=""></iframe>
+    </div>
 
     <script>
         const scripts = {
-            "ana": "https://script.google.com/macros/s/AKfycbw-94qD__uDZgF2gnhTG8bbnizCe5GYH6Lq4ICNCMxNMWt5FoTqSfe1t3TMFeGeI_Q/exec",
-            "Samir Səfərov": "https://script.google.com/macros/s/AKfycbyWIY6km-6TM1CRXZFmP0xwl1e1nkxxnVhTp3x6w2PvdC1aTRpalM5UucTPcmUQg7Yl/exec",
+            "ana": "https://script.google.com/macros/s/AKfycbz7LMVVmfVtj03ANqwPf68d5BEapDcDkSVM-jA_rJsg2sZyw2FsOEOOEv1Acq-kLX0/exec",
+            "Samir Səfərov": "https://script.google.com/macros/s/AKfycbxwRXi12P2NmNi9VFDA_27kVBfnIvZr-FHxsHGWsUk9jUP031RTb5Y8P9deShwRT5Pu/exec",
             "Çinarə": "https://script.google.com/macros/s/AKfycbzX0-2VPasT4uj2bXMZLlS_-8z9nQXk05LEIQGOun2fbDVrU46YjMvHgWHsTxLcDxvS/exec",
             "Zakir": "https://script.google.com/macros/s/AKfycbwrgzf32FdoH84uaggiczfaVMw80rnPntREsazWb3GK9cmRBCFMy-Z94zqWwEPx6bfLLQ/exec",
             "Ayxan": "https://script.google.com/macros/s/AKfycbxQOtZ9HJSGJ41p4HeU0Y0KFaiCLwE02_R-gDnbFAL9a_REZnE3USoXipNu5FVanycvPw/exec"
